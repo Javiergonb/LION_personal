@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## <p align="center">LION: Latent Point Diffusion Models for 3D Shape Generation<br><br> NeurIPS 2022 </p>
 <div align="center">
   <a href="https://www.cs.utoronto.ca/~xiaohui/" target="_blank">Xiaohui&nbsp;Zeng</a> &emsp; 
@@ -116,3 +117,5 @@ bash ./script/eval.sh $checkpoint  # will take 1-2 hour
         year={2022}
 }
 ```
+=======
+
