@@ -11,7 +11,7 @@ import os
 def get_path(dataname=None):
     dataset_path = {}
     dataset_path['pointflow'] = [
-        './data/plates_and_bowls_v_1/'
+        './data/airplane/'
 
     ]
     dataset_path['clip_forge_image'] = [

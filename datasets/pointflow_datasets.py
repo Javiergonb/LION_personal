@@ -24,8 +24,8 @@ OVERFIT = 0
 # taken from https://github.com/optas/latent_3d_points/blob/
 # 8e8f29f8124ed5fc59439e8551ba7ef7567c9a37/src/in_out.py
 synsetid_to_cate = {
-    '04580795': 'plates',
-    #'02691156': 'airplane',
+    #'04580795': 'plates',
+    '02691156': 'airplane',
     #'02773838': 'bag',
     #'02801938': 'basket',
     #'02808440': 'bathtub',

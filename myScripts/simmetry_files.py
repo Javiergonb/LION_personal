@@ -59,4 +59,4 @@ def process_point_clouds_and_tensors_json(original_folder, encoded_folder, outpu
         json.dump(chamfer_distances, f, indent=4)
 
 # Example usage
-process_point_clouds_and_tensors_json('/home/javgonza/LION/data/chair/train', '/home/javgonza/tensors/Shapenet/chair/train', '../chamfer_distances_chair.json')
+process_point_clouds_and_tensors_json('/home/javgonza/LION/data/airplane/02691156/train', '/home/javgonza/tensors/NEWSHAPENET/train', '../chamfer_distances_NEWSHAPENET.json')

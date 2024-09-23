@@ -216,6 +216,7 @@ class Model(nn.Module):
             x:  Input point clouds, (B, N, d).
         """
         ## kl_weight = self.kl_weight
+
         
         if self.args.trainer.anneal_kl and self.num_total_iter > 0: 
             global_step = it 
@@ -235,6 +236,7 @@ class Model(nn.Module):
         output = self.recont(inputs, target=x, class_label=class_label)
         
         x_0_pred, x_0_target = output['x_0_pred'], output['x_0_target']
+        
         loss_0 = loss_fn(x_0_pred, x_0_target, self.args.ddpm.loss_type, 
                 self.input_dim, batch_size).mean()
         rec_loss = loss_0 
@@ -290,7 +292,26 @@ class Model(nn.Module):
             kl = kl_weight * sum(weighted_kl_terms) 
         else:
             kl = kl_weight * sum(kl_term_list) 
-        loss = kl + loss_recons * self.args.weight_recont 
+
+        #simmetry loss
+        #Get the latent representation of x? Find out how it looks. 
+        #Update: It seems to be the same as i have been doing so just calling the latent points method should work
+        lp_representation = self.get_latent_points(x) #It seems this applies a latent to all the tensors in the batch.
+        #print(f"THIS IS LATENT: {lp_representation}")
+        
+        #Mirror against YZ Plane
+        mirrored_latent = helper.mirror_latent(lp_representation)#This seems to work, we select everything and get the x dimension and then apply a *-1
+        #print(f"THIS IS MIRROR: {mirrored_latent}")
+        #Use chamfer distance loss function
+        #Okay here i am not really sure how this will work but lets call the loss_fn function with the chamfer distance 
+        sym_loss = loss_fn(lp_representation,mirrored_latent,'chamfer', 
+                self.input_dim, batch_size).mean()
+
+
+        loss = kl + loss_recons * self.args.weight_recont + sym_loss# + simmetry loss * (weight to be decided)
+        #prunt out KL, recont Loss and simmetry loss to decide weight
+        print(f'[LOSS FUNCTIONS] kl_divergence: {kl}, recon_loss: {loss_recons}, symetry_loss: {sym_loss}')
+            
         output['msg/kl'] = kl 
         output['msg/rec'] = loss_recons
         output['loss'] = loss 
