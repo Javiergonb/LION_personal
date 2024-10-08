@@ -1,0 +1,6 @@
+Dataset  	Model  	  MMD-CDx0.001↓	  MMD-EMDx0.01↓	  COV-CD%↑	  COV-EMD%↑	  1-NNA-CD%↓	  1-NNA-EMD%↓	  JSD↓
+         	       	        11.4818	         2.4011	      0.25	       0.49	         100	          100	  0.53
+Dataset  	Model  	  MMD-CDx0.001↓	  MMD-EMDx0.01↓	  COV-CD%↑	  COV-EMD%↑	  1-NNA-CD%↓	  1-NNA-EMD%↓	  JSD↓
+-normbox 	       	         0.3195	         0.5629	     45.93	      45.68	       74.57	         65.8	  0.09
+Dataset  	Model  	  MMD-CDx0.001↓	  MMD-EMDx0.01↓	  COV-CD%↑	  COV-EMD%↑	  1-NNA-CD%↓	  1-NNA-EMD%↓	  JSD↓
+-normbox 	       	         0.3647	         0.5769	     43.95	      48.64	       77.41	        70.49	   0.1
